@@ -83,7 +83,7 @@ public class ProjectServiceImpl implements ProjectService {
         Optional<Projects> project = projectRepo.findById(s);
         if (project.isPresent()) {
 
-            return createAndSendResponse(HttpStatus.FOUND.value(), "Project successfully retrieved!", Convertor.toProjectsDTO(project.get()));
+            return createAndSendResponse(HttpStatus.FOUND.value(), "Project successfully retrieved!", CustomConvertor.toProjectsDTO(project.get()));
 
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Project not found!", null);
@@ -95,7 +95,7 @@ public class ProjectServiceImpl implements ProjectService {
         if(!projects.isEmpty()){
             List<Projects_DTO>projectsDtos = new ArrayList<>();
             projects.forEach((project)->{
-            projectsDtos.add(Convertor.toProjectsDTO(project));
+            projectsDtos.add(CustomConvertor.toProjectsDTO(project));
             });
             return createAndSendResponse(HttpStatus.FOUND.value(),"Projects successfully retrieved!",projectsDtos );
 
