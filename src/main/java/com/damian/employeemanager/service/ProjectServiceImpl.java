@@ -95,7 +95,7 @@ public class ProjectServiceImpl implements ProjectService {
         if(!projects.isEmpty()){
             List<Projects_DTO>projectsDtos = new ArrayList<>();
             projects.forEach((project)->{
-            projectsDtos.add(mapper.map(project,Projects_DTO.class));
+            projectsDtos.add(Convertor.toProjectsDTO(project));
             });
             return createAndSendResponse(HttpStatus.FOUND.value(),"Projects successfully retrieved!",projectsDtos );
 
