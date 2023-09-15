@@ -15,5 +15,5 @@ public class Projects_DTO implements Serializable, Super_DTO {
     private String projectName;
     private String projectDescription;
     private String projectDeadline;
-    private String employeeId;
+    private String techLeadId;
 }
