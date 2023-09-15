@@ -24,7 +24,25 @@ public class ProjectsController {
     public Response update(@RequestBody Projects_DTO projectsDto) {
         return projectsService.update(projectsDto);
     }
-    /*@GetMapping(path = "/search",params="/projectId",produces = MediaType.APPLICATION_JSON_VALUE)*/
+
+    @GetMapping(path = "/search", params = "projectId", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response search(@RequestParam("projectId") String projectId) {
+        return projectsService.search(projectId);
+
+
+    }
+
+    @DeleteMapping(path = "/delete", params = "projectId", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response delete(@RequestParam("projectId") String projectId) {
+        return projectsService.delete(projectId);
+
+
+    }
+
+    @GetMapping(path = "/fetchAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response getAll() {
+        return projectsService.getAll();
+    }
 
 }
 

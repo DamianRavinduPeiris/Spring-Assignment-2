@@ -82,7 +82,8 @@ public class ProjectServiceImpl implements ProjectService {
     public Response search(String s) {
         Optional<Projects> project = projectRepo.findById(s);
         if (project.isPresent()) {
-            return createAndSendResponse(HttpStatus.FOUND.value(), "Project successfully retrieved!", mapper.map(project.get(), Projects.class));
+
+            return createAndSendResponse(HttpStatus.FOUND.value(), "Project successfully retrieved!", Convertor.toProjectsDTO(project.get()));
 
         }
         return createAndSendResponse(HttpStatus.NOT_FOUND.value(), "Project not found!", null);
